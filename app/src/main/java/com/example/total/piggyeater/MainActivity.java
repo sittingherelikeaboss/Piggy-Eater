@@ -2,6 +2,7 @@ package com.example.total.piggyeater;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 public class MainActivity extends AppCompatActivity {
 
