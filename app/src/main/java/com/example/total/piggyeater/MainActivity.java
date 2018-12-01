@@ -67,18 +67,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+
+    Class activity = null;
+
         switch (v.getId()) {
             case R.id.button_yes:
-                //Toast.makeText(this, "Good boy", Toast.LENGTH_SHORT).show();
-                try {
-                    Thread.sleep(10000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Toast.makeText(this, "Good boy!\nHere's your reward!", Toast.LENGTH_SHORT).show();
+                activity = PigActivity1.class;
+                openActivity();
                 break;
             case R.id.button_no:
-                Toast.makeText(this, "THE PIG IS STARVING", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "THE PIG IS STARVING", Toast.LENGTH_SHORT).show();
+//                try {
+//                    Thread.sleep(10000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
                 break;
         }
+    }
+
+    public void openActivity() {
+        Intent intent = new Intent(this, PigActivity1.class);
+        startActivity(intent);
     }
 }
