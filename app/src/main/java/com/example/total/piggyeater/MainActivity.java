@@ -8,9 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.tasks.Task;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -23,12 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         GoogleApiAvailability api = GoogleApiAvailability.getInstance();
         int code = api.isGooglePlayServicesAvailable(this);
         if (code == ConnectionResult.SUCCESS) {
-            Context context = getApplicationContext();
-            CharSequence text = "Connected!";
-            int duration = Toast.LENGTH_SHORT;
+            //Authorization for the Google Drive Android API
+            GoogleSignInClient mGoogleSignInClient = buildGoogleSignInClient();
+            Task x = GoogleSignInClient.getGoogleSignInAccountFromIntent();
 
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
         } else {
             AlertDialog alertDialog =
                     new AlertDialog.Builder(this, R.style.MyAlertDialogStyle).setMessage(
@@ -37,98 +41,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             alertDialog.show();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //jastine works here
         Button buttonYes = findViewById(R.id.button_yes);
         Button buttonNo = findViewById(R.id.button_no);
 
         buttonYes.setOnClickListener(this);
         buttonNo.setOnClickListener(this);
-    }//
+    }
+
+    //used to sign into your google drive
+    private GoogleSignInClient buildGoogleSignInClient() {
+        GoogleSignInOptions signInOptions =
+                new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestScopes(Drive.SCOPE_FILE)
+                        .build();
+        return GoogleSignIn.getClient(this, signInOptions);
+    }
 
     @Override
     public void onClick(View v) {
