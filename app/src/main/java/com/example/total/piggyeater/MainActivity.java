@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonYes.setOnClickListener(this);
         buttonNo.setOnClickListener(this);
-    }
+    }//
 
     @Override
     public void onClick(View v) {
