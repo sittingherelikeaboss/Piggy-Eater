@@ -1,15 +1,18 @@
 package com.example.total.piggyeater;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 //TESTING BRANCH
     @Override
@@ -120,5 +123,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         //jastine works here
+        Button buttonYes = findViewById(R.id.button_yes);
+        Button buttonNo = findViewById(R.id.button_no);
+
+        buttonYes.setOnClickListener(this);
+        buttonNo.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_yes:
+                Toast.makeText(this, "Good boy", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button_no:
+                Toast.makeText(this, "THE PIG IS STARVING", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
