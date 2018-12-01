@@ -2,6 +2,7 @@ package com.example.total.piggyeater;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.drive.Drive;
+import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.tasks.Task;
+
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -25,13 +28,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        /*
         GoogleApiAvailability api = GoogleApiAvailability.getInstance();
         int code = api.isGooglePlayServicesAvailable(this);
         if (code == ConnectionResult.SUCCESS) {
             //Authorization for the Google Drive Android API
             GoogleSignInClient mGoogleSignInClient = buildGoogleSignInClient();
-            Task x = GoogleSignInClient.getGoogleSignInAccountFromIntent();
+
+            //Intent x = GoogleSignInClient.getGoogleSignInAccountFromIntent();
 
         } else {
             AlertDialog alertDialog =
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             .create();
             alertDialog.show();
         }
+        */
 
         //jastine works here
         Button buttonYes = findViewById(R.id.button_yes);
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonYes.setOnClickListener(this);
         buttonNo.setOnClickListener(this);
     }
-
+    /*
     //used to sign into your google drive
     private GoogleSignInClient buildGoogleSignInClient() {
         GoogleSignInOptions signInOptions =
@@ -56,7 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .requestScopes(Drive.SCOPE_FILE)
                         .build();
         return GoogleSignIn.getClient(this, signInOptions);
+
     }
+    */
 
     @Override
     public void onClick(View v) {
