@@ -69,7 +69,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_yes:
-                Toast.makeText(this, "Good boy", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Good boy", Toast.LENGTH_SHORT).show();
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.button_no:
                 Toast.makeText(this, "THE PIG IS STARVING", Toast.LENGTH_SHORT).show();
