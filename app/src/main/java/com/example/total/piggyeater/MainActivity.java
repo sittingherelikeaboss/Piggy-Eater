@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Random;
 
+//by Alex Szebrag and Jastine Goyena
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
