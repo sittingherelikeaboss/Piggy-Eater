@@ -19,6 +19,7 @@ import com.google.android.gms.drive.Drive;
 import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.tasks.Task;
 
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -67,28 +68,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Random generator = new Random();
+        int number = generator.nextInt(5) + 1;
 
-    Class activity = null;
+        Class activity = null;
 
         switch (v.getId()) {
             case R.id.button_yes:
                 Toast.makeText(this, "Good boy!\nHere's your reward!", Toast.LENGTH_SHORT).show();
-                activity = PigActivity1.class;
-                openActivity();
+                switch(number) {
+                    case 1:
+                        activity = PigActivity1.class;
+                        break;
+                    case 2:
+                        activity = PigActivity2.class;
+                        break;
+                    case 3:
+                        activity = PigActivity3.class;
+                        break;
+                    case 4:
+                        activity = PigActivity4.class;
+                        break;
+                    case 5:
+                        activity = PigActivity5.class;
+                        break;
+                }
+                Intent intent = new Intent(this, activity);
+                startActivity(intent);
                 break;
             case R.id.button_no:
-                //Toast.makeText(this, "THE PIG IS STARVING", Toast.LENGTH_SHORT).show();
-//                try {
-//                    Thread.sleep(10000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+                Toast.makeText(this, "THE PIG IS STARVING", Toast.LENGTH_SHORT).show();
+                Intent sad_intent = new Intent(this, SadPigActivity1.class);
+                startActivity(sad_intent);
                 break;
         }
-    }
-
-    public void openActivity() {
-        Intent intent = new Intent(this, PigActivity1.class);
-        startActivity(intent);
     }
 }
